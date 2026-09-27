@@ -1,6 +1,6 @@
 (() => {
   const cfg = window.APP_CONFIG || {};
-  const required = ["SUPABASE_URL", "SUPABASE_ANON_KEY", "MEMBER_EMAIL", "ADMIN_EMAIL"];
+  const required = ["SUPABASE_URL", "SUPABASE_ANON_KEY", "LOGIN_FUNCTION_URL"];
   const missing = required.filter((key) => !cfg[key] || cfg[key].includes("DEIN-"));
 
   if (missing.length) {
@@ -176,11 +176,29 @@
     loginError.textContent = "";
 
     const role = loginRole.value;
-    const email = role === "admin" ? cfg.ADMIN_EMAIL : cfg.MEMBER_EMAIL;
 
-    const { data, error } = await sb.auth.signInWithPassword({
-      email,
-      password: password.value,
+    const response = await fetch(cfg.LOGIN_FUNCTION_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "apikey": cfg.SUPABASE_ANON_KEY
+      },
+      body: JSON.stringify({
+        role,
+        password: password.value
+      })
+    });
+
+    const result = await response.json().catch(() => ({}));
+
+    if (!response.ok || !result.access_token || !result.refresh_token) {
+      loginError.textContent = result.error || "Anmeldung fehlgeschlagen. Passwort prüfen.";
+      return;
+    }
+
+    const { data, error } = await sb.auth.setSession({
+      access_token: result.access_token,
+      refresh_token: result.refresh_token
     });
 
     if (error || !data.user) {
