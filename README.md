@@ -1,28 +1,26 @@
-# SG Braunschweig – Teampokal 2025/26/27
+# SG Braunschweig – Teampokal 2026/27
 
-Mobile Web-App für den Teampokal.
+Mobile Web-App für den SG-Braunschweig-Teampokal.
 
 ## Funktionen
 
 - Passwort-Login für Team und Administrator
-- gemeinsames Ranking
-- Admin kann Punkte ändern
-- Admin kann Teilnehmer hinzufügen und löschen
+- Teamansicht zeigt die Top 5
+- Plätze 1, 2 und 3 sind Gold, Silber und Bronze markiert
+- Admin sieht das vollständige Ranking
+- kompakte Spielerliste mit Popup für Punktkorrekturen
+- Schnellkorrekturen um -2, -1, +1 und +2 Punkte
+- Sammelbuchung „Personen beim Training heute“ mit +2 Punkten für alle Ausgewählten
+- Teilnehmer hinzufügen und löschen
+- Punkte-Legende für Training, Spiel, Trikots, Kampfgericht und Abzüge
+- Black-Mode und SG-Braunschweig-Logo
 - GitHub Pages als Hosting
 - Supabase für Authentifizierung und Datenbank
 - als Web-App auf dem Homescreen nutzbar
 
-## Einrichtung
-
-1. Kostenloses Supabase-Projekt anlegen.
-2. `supabase.sql` im SQL Editor ausführen.
-3. Zwei Auth-Benutzer anlegen: Team und Admin.
-4. Die Benutzer in `public.profiles` den Rollen `member` und `admin` zuordnen.
-5. Project URL und Publishable/Anon Key in `config.js` eintragen.
-6. In GitHub Pages den Branch `main` und `/ (root)` veröffentlichen.
-
 ## Sicherheit
 
-- Passwörter gehören nicht ins Repository.
+- Passwörter liegen nicht im Repository.
+- Login-E-Mail-Adressen werden nicht im öffentlichen Frontend angezeigt oder gespeichert.
 - Niemals einen Supabase `service_role`- oder Secret-Key in `config.js` eintragen.
 - Adminrechte werden über Supabase Row Level Security geprüft.
