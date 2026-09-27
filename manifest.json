@@ -1,9 +1,9 @@
 {
-  "name": "SG Braunschweig Teampokal",
+  "name": "SG Braunschweig Teampokal 2026/27",
   "short_name": "Teampokal",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#f3f4f6",
-  "theme_color": "#111827",
-  "icons": [{"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"}]
+  "background_color": "#07090d",
+  "theme_color": "#07090d",
+  "icons": [{"src":"./sg-logo.webp","sizes":"180x180","type":"image/webp","purpose":"any"}]
 }
