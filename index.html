@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#111827" />
+  <meta name="description" content="SG Braunschweig Teampokal – Punkte-Ranking" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="./styles.css" />
+  <title>SG Braunschweig – Teampokal</title>
+</head>
+<body>
+  <main class="shell">
+    <section id="loginView" class="card login-card">
+      <div class="brand">
+        <div class="brand-mark">SG</div>
+        <div>
+          <p class="eyebrow">SG Braunschweig</p>
+          <h1>Teampokal 2025/26/27</h1>
+        </div>
+      </div>
+
+      <p class="muted">Anmelden, um das aktuelle Punkte-Ranking zu sehen.</p>
+
+      <form id="loginForm" class="stack">
+        <label>
+          Zugang
+          <select id="loginRole">
+            <option value="member">Team</option>
+            <option value="admin">Administrator</option>
+          </select>
+        </label>
+
+        <label>
+          Passwort
+          <input id="password" type="password" autocomplete="current-password" required />
+        </label>
+
+        <button class="primary" type="submit">Anmelden</button>
+        <p id="loginError" class="error" role="alert"></p>
+      </form>
+    </section>
+
+    <section id="appView" class="hidden">
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">SG Braunschweig</p>
+          <h1>Teampokal 2025/26/27</h1>
+          <p id="accessBadge" class="badge"></p>
+        </div>
+        <button id="logoutBtn" class="ghost">Abmelden</button>
+      </header>
+
+      <section class="card">
+        <div class="section-heading">
+          <div>
+            <h2>Ranking</h2>
+            <p id="updatedLabel" class="muted small"></p>
+          </div>
+          <button id="refreshBtn" class="ghost">Aktualisieren</button>
+        </div>
+
+        <div id="ranking" class="ranking"></div>
+        <p id="emptyState" class="muted hidden">Noch keine Teilnehmer angelegt.</p>
+      </section>
+
+      <section id="adminPanel" class="card hidden">
+        <h2>Administration</h2>
+        <p class="muted">Punkte ändern oder Teilnehmer verwalten.</p>
+
+        <form id="addPlayerForm" class="inline-form">
+          <input id="newPlayerName" type="text" maxlength="60" placeholder="Name des Teilnehmers" required />
+          <button type="submit" class="primary">Hinzufügen</button>
+        </form>
+
+        <div id="adminPlayers" class="admin-list"></div>
+      </section>
+
+      <p id="statusMessage" class="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./config.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
