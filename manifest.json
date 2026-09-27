@@ -5,5 +5,5 @@
   "display": "standalone",
   "background_color": "#07090d",
   "theme_color": "#07090d",
-  "icons": [{"src":"./sg-logo.webp","sizes":"180x180","type":"image/webp","purpose":"any"}]
+  "icons": [{"src":"./sg-logo.png","sizes":"96x93","type":"image/png","purpose":"any"}]
 }
