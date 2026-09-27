@@ -19,7 +19,6 @@
   const loginError = $("#loginError");
   const ranking = $("#ranking");
   const rankingTitle = $("#rankingTitle");
-  const rankingHint = $("#rankingHint");
   const emptyState = $("#emptyState");
   const adminPanel = $("#adminPanel");
   const adminPlayers = $("#adminPlayers");
@@ -74,7 +73,6 @@
     adminPanel.classList.toggle("hidden", role !== "admin");
     accessBadge.textContent = role === "admin" ? "Admin-Zugang" : "Team-Zugang";
     rankingTitle.textContent = role === "admin" ? "Gesamtes Ranking" : "Top 5 Ranking";
-    rankingHint.textContent = role === "admin" ? "Alle Personen sichtbar." : "Für Teammitglieder werden nur die fünf Führenden angezeigt.";
   }
 
   function showLogin() {
